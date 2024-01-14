@@ -14,7 +14,7 @@ const Service = () => {
                     Why Choose Us
                 </h1>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:w-[1200px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:w-[1200px] mx-auto">
                 <div className="w-[300px]  hover:shadow-lg duration-500 p-5 mx-2 rounded-lg">
                     <div className="flex justify-center items-center border bg-blue-500 rounded-full w-[200px] h-[200px] my-5 mx-3">
                         <Image
