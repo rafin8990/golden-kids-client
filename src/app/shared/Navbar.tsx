@@ -1,15 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
+'use client'
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+interface NavItemTypes {
+  path: string;
+  title: string;
+}
 
 const Navbar = () => {
-  const navItems = <>
-  <li><Link href={"/"}>Home</Link></li>
-  <li><Link href={"/cause"}>Causes</Link></li>
-  <li><Link href={"/about"}>About</Link></li>
-  <li><Link href={"/facilities"}>Facilities</Link></li>
-  <li><Link href={"/contact"}>Contact</Link></li>
-  <li><Link href={"/news"}>News</Link></li>
-</>
+  const pathname = usePathname();
+
+  // nav item lists
+  const navItems = [{ path: '/', title: 'Home', }, { path: '/about', title: 'About', }, { path: '/facilities', title: 'Facilities', }, { path: '/admission', title: 'Admission & Academic', }, { path: '/contact', title: 'Contact', }, { path: '/news', title: 'News', }]
+
   return (
     <div className="">
       <div className="navbar  max-w-7xl mx-auto">
@@ -51,9 +55,22 @@ const Navbar = () => {
             alt=""
           />
         </div>
+
+        {/* nav items */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 font-bold ">{navItems}</ul>
+          <ul className="menu menu-horizontal px-1 font-bold ">
+            {
+              navItems.map((item: NavItemTypes, index: number) => (
+                <li key={index}>
+                  <Link className={`${pathname === item.path ? "bg-gray-300 rounded-md px-7" : ""}`} href={item.path}>
+                    {item.title}
+                  </Link>
+                </li>
+              ))
+            }
+          </ul>
         </div>
+
         <div className="navbar-end">
           <Link href="/donate">
             {" "}
